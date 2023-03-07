@@ -1,0 +1,59 @@
+import random
+
+l1 = [i for i in range(15)]
+print(l1)
+listpot=[i**5 for i in range(15)]
+print(listpot)
+import math
+listfac=[math.factorial(i) for i in range(21)]
+print(listfac)
+liste=[math.e**i for i in range(21)]
+print(liste)
+imie=["Mateusz","Karol","Bartosz"]
+nazwisko=["Centol","Lubel","Koperkov"]
+#1
+dl=[len(nazwisko[i]) for i in range(len(nazwisko))]
+print(dl)
+list1=[1,2,3,4,5,6,7,8,9,10]
+list2=[10,20,30,40,50,60,70,80,90,100]
+print(list1+list2)
+mon=["styczen","luty","marzec","kwiecien","maj","czerwiec","lipiec","sierpien","wrzesien","pazdziernik","listopad","grudzien"]
+mon2=["kwiecien","styczen","luty","grudzien","maj"]
+def numer(month_name):
+    mon = {"styczen": 1, "luty": 2, "marzec": 3, "kwiecien": 4, "maj": 5, "czerwiec": 6, "lipiec": 7, "sierpien": 8, "wrzesien": 9, "pazdziernik": 10, "listopad": 11, "grudzien": 12}
+    return mon.get(month_name)
+print(mon2)
+mon2.sort(key=numer)
+print(mon2)
+literka="C"
+def filtr(imie, litera):
+    pofiltr = [i for i in imie if i[0] > litera]
+    return pofiltr
+def filtrdl(imie):
+    pofiltr = [i for i in imie if len(i) > 6]
+    return pofiltr
+print(filtrdl(imie))
+print(filtr(imie,literka))
+
+st = {"Polska", "Niemcy", "Slowacja", "Turcja", "Francja"}
+nd = {"RPA", "Kongo", "Niemcy"}
+rd = {"Polska", "Niemcy", "Madagaskar", "USA", "Kanada"}
+print(st)
+st.add("Wlochy")
+print(st)
+print("czy Polska jest?", "Polska" in st)
+st.remove("Wlochy")
+print(st)
+sm = st.union(nd, rd)   #suma
+print(sm)
+inter = st.intersection(nd, rd) #czesc wspolna
+print(inter)
+diff = st.difference(nd) #roznica
+print(diff)
+tab = [1,2,3]
+kr = (1, "str", 1.432, 1j, False, nd, tab )
+print(kr)
+#kr[2] = 2137
+print(kr[3])
+print(kr[3], kr[4], kr[5])
+print(kr[::2])
