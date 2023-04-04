@@ -1,0 +1,44 @@
+names = ["michal", "nela", "ola", "przemek"]
+capitalized_names = [name.capitalize() for name in names]
+print(capitalized_names)
+
+names_with_l = [name for name in names if "l" in name]
+print(names_with_l)
+
+female_names = tuple([name.capitalize() for name in names if name.endswith("a")])
+print(female_names)
+
+total_lenght = 0
+for name in names:
+    total_lenght += len(name)
+print(total_lenght)
+
+def multiply(*args):
+    result = 1
+    for arg in args:
+        result += arg
+    return result
+
+def sum_of_powers(n, *args):
+    result = 0
+    for arg in args:
+        result += arg ** n
+    return result
+
+def mean(*args):
+    return sum(args)/len(args)
+
+import math
+
+def gmean(*args):
+    product = 1
+    for arg in args:
+        product *= arg
+    return math.pow(product,1/len(args))
+
+def total_lenght(*args):
+    result = 0
+    for arg in args:
+        if insistance(arg,str):
+            result += len(arg)
+    return result
