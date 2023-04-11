@@ -25,9 +25,9 @@ apple = Apple()
 banana = Banana()
 orange = Orange()
 
-print(apple.color) # output: red
-print(banana.isfresh()) # output: True
-print(orange.weight) # output: 0.3
+print(apple.color)
+print(banana.isfresh())
+print(orange.weight)
 
 class Account:
     def __init__(self, balance):
@@ -102,9 +102,9 @@ class RomanNumeral:
 numeral1 = RomanNumeral("V")
 numeral2 = RomanNumeral("X")
 
-print(numeral1 + numeral2) # output: XV
-print(numeral2 - numeral1) # output: V
-print(numeral1 * numeral2) # output: L
-print(len(numeral2)) # output: 1
+print(numeral1 + numeral2)
+print(numeral2 - numeral1)
+print(numeral1 * numeral2)
+print(len(numeral2))
 print(numeral
 
