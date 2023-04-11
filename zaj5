@@ -1,1 +1,110 @@
+class Fruit:
+    def __init__(self, color, weight):
+        self.color = color
+        self.weight = weight
+        
+    def isfresh(self):
+        if self.color == "green" or self.color == "yellow":
+            return True
+        else:
+            return False
+
+class Apple(Fruit):
+    def __init__(self):
+        super().__init__("red", 0.2)
+
+class Banana(Fruit):
+    def __init__(self):
+        super().__init__("yellow", 0.1)
+
+class Orange(Fruit):
+    def __init__(self):
+        super().__init__("orange", 0.3)
+
+apple = Apple()
+banana = Banana()
+orange = Orange()
+
+print(apple.color) # output: red
+print(banana.isfresh()) # output: True
+print(orange.weight) # output: 0.3
+
+class Account:
+    def __init__(self, balance):
+        self.balance = balance
+    
+    def deposit(self, amount):
+        self.balance += amount
+        
+    def withdraw(self, amount):
+        if self.balance >= amount:
+            self.balance -= amount
+        else:
+            print("Insufficient balance!")
+    
+    def transfer(self, account, amount):
+        if self.balance >= amount:
+            self.balance -= amount
+            account.deposit(amount)
+        else:
+            print("Insufficient balance!")
+    
+class PrivateAccount(Account):
+    def __init__(self, balance, salary):
+        super().__init__(balance)
+        self.salary = salary
+    
+    def receive_salary(self):
+        self.balance += self.salary
+        
+class FirmAccount(Account):
+    def __init__(self, balance, tax_id):
+        super().__init__(balance)
+        self.tax_id = tax_id
+    
+    def pay_taxes(self, amount):
+        self.withdraw(amount)
+        print("Taxes paid successfully!")
+
+account1 = Account(1000)
+account2 = PrivateAccount(500, 3000)
+account3 = FirmAccount(20000, "1234567890")
+
+account2.receive_salary()
+account2.transfer(account1, 500)
+account3.pay_taxes(5000)
+
+class RomanNumeral:
+    def __init__(self, value):
+        self.value = value
+    
+    def __add__(self, other):
+        return RomanNumeral(self.value + other.value)
+    
+    def __sub__(self, other):
+        return RomanNumeral(self.value - other.value)
+    
+    def __mul__(self, other):
+        return RomanNumeral(self.value * other.value)
+    
+    def __len__(self):
+        return len(self.value)
+    
+    def __floordiv__(self, other):
+        return RomanNumeral(self.value // other.value)
+    
+    def __str__(self):
+        return self.value
+    
+    def __getitem__(self, index):
+        return self.value[index]
+    
+numeral1 = RomanNumeral("V")
+numeral2 = RomanNumeral("X")
+
+print(numeral1 + numeral2) # output: XV
+print(numeral2 - numeral1) # output: V
+print(numeral1 * numeral2) # output: L
+print(len(numeral2)) # output: 1
+print(numeral
 
