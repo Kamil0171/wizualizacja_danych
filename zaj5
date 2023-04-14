@@ -2,7 +2,7 @@ class Fruit:
     def __init__(self, color, weight):
         self.color = color
         self.weight = weight
-        
+
     def isfresh(self):
         if self.color == "green" or self.color == "yellow":
             return True
@@ -11,15 +11,15 @@ class Fruit:
 
 class Apple(Fruit):
     def __init__(self):
-        super().__init__("red", 0.2)
+        super().__init__("color: red", 1.1)
 
 class Banana(Fruit):
     def __init__(self):
-        super().__init__("yellow", 0.1)
+        super().__init__("color: yellow", 0.5)
 
 class Orange(Fruit):
     def __init__(self):
-        super().__init__("orange", 0.3)
+        super().__init__("color: orange", 0.8)
 
 apple = Apple()
 banana = Banana()
@@ -32,36 +32,36 @@ print(orange.weight)
 class Account:
     def __init__(self, balance):
         self.balance = balance
-    
+
     def deposit(self, amount):
         self.balance += amount
-        
+
     def withdraw(self, amount):
         if self.balance >= amount:
             self.balance -= amount
         else:
             print("Insufficient balance!")
-    
+
     def transfer(self, account, amount):
         if self.balance >= amount:
             self.balance -= amount
             account.deposit(amount)
         else:
             print("Insufficient balance!")
-    
+
 class PrivateAccount(Account):
     def __init__(self, balance, salary):
         super().__init__(balance)
         self.salary = salary
-    
+
     def receive_salary(self):
         self.balance += self.salary
-        
+
 class FirmAccount(Account):
     def __init__(self, balance, tax_id):
         super().__init__(balance)
         self.tax_id = tax_id
-    
+
     def pay_taxes(self, amount):
         self.withdraw(amount)
         print("Taxes paid successfully!")
