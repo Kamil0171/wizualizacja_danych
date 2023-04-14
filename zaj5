@@ -77,34 +77,42 @@ account3.pay_taxes(5000)
 class RomanNumeral:
     def __init__(self, value):
         self.value = value
-    
+
+    def __repr__(self):
+        return self.to_roman()
+
     def __add__(self, other):
-        return RomanNumeral(self.value + other.value)
-    
+        if isinstance(other, int):
+            return RomanNumeral(self.value + other)
+        elif isinstance(other, RomanNumeral):
+            return RomanNumeral(self.value + other.value)
+
     def __sub__(self, other):
-        return RomanNumeral(self.value - other.value)
-    
+        if isinstance(other, int):
+            return RomanNumeral(self.value - other)
+        elif isinstance(other, RomanNumeral):
+            return RomanNumeral(self.value - other.value)
+
     def __mul__(self, other):
-        return RomanNumeral(self.value * other.value)
-    
+        if isinstance(other, int):
+            return RomanNumeral(self.value * other)
+        elif isinstance(other, RomanNumeral):
+            return RomanNumeral(self.value * other.value)
+
     def __len__(self):
-        return len(self.value)
-    
+        return len(self.to_roman())
+
     def __floordiv__(self, other):
-        return RomanNumeral(self.value // other.value)
-    
-    def __str__(self):
-        return self.value
-    
-    def __getitem__(self, index):
-        return self.value[index]
-    
-numeral1 = RomanNumeral("V")
-numeral2 = RomanNumeral("X")
+        if isinstance(other, int):
+            return RomanNumeral(self.value // other)
+        elif isinstance(other, RomanNumeral):
+            return RomanNumeral(self.value // other.value)
 
-print(numeral1 + numeral2)
-print(numeral2 - numeral1)
-print(numeral1 * numeral2)
-print(len(numeral2))
-print(numeral
-
+    def to_roman(self):
+        roman_numerals = {1000: 'M', 900: 'CM', 500: 'D', 400: 'CD', 100: 'C', 90: 'XC', 50: 'L', 40: 'XL', 10: 'X', 9: 'IX', 5: 'V', 4: 'IV', 1: 'I'}
+        result = ''
+        for value, numeral in roman_numerals.items():
+            while self.value >= value:
+                result += numeral
+                self.value -= value
+        return result
