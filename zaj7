@@ -1,18 +1,13 @@
 PRZYKŁADOWE KOLOKWIUM
 
-Zad 1
-def display_unique_values(lst):
-    unique_values = set(lst)
-    for val in unique_values:
-        print(val)
+# Zad 1
 
-
-def print_unique_values(lst):
+def print_unique_values(list):
     unique_values = []
-    for value in lst:
+    for value in list:
         if value not in unique_values:
             unique_values.append(value)
             print(value)
 
-lst = [1, 2, 3, 2, 4, 3, 5, 1]
-print_unique_values(lst)
+list = [7,8,1,2,3,4,9]
+print_unique_values(list)
