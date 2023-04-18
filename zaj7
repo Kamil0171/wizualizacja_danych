@@ -1,1 +1,7 @@
 PRZYKŁADOWE KOLOKWIUM
+
+Zad 1
+def display_unique_values(lst):
+    unique_values = set(lst)
+    for val in unique_values:
+        print(val)
