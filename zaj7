@@ -43,7 +43,7 @@ def fibonacci(n):
 
 print(fibonacci(10))
 
-
+# Zad 4
 
 def potegi(*args, n):
     iloczyn = 1
@@ -51,9 +51,5 @@ def potegi(*args, n):
         iloczyn *= liczba ** n
     return iloczyn
 
-
 wynik = potegi(1, 2, 3, 4, 5, n=2)
-print(wynik)  # wynik to 2250 (bo 1^2 * 2^2 * 3^2 * 4^2 * 5^2 = 2250)
-
-
-
+print(wynik)
