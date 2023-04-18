@@ -5,3 +5,14 @@ def display_unique_values(lst):
     unique_values = set(lst)
     for val in unique_values:
         print(val)
+
+
+def print_unique_values(lst):
+    unique_values = []
+    for value in lst:
+        if value not in unique_values:
+            unique_values.append(value)
+            print(value)
+
+lst = [1, 2, 3, 2, 4, 3, 5, 1]
+print_unique_values(lst)
