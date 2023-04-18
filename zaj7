@@ -53,3 +53,11 @@ def potegi(*args, n):
 
 wynik = potegi(1, 2, 3, 4, 5, n=2)
 print(wynik)
+
+fruits = ['apple', 'banana', 'pomergranate', 'plum', 'orange', 'melon', 'cherry', 'watermelon']
+
+selected_fruits_lengths = [len(fruit) for fruit in fruits if 'u' in fruit or 'o' in fruit]
+
+print(selected_fruits_lengths)
+
+[5, 6, 9, 4, 6, 5, 10]
