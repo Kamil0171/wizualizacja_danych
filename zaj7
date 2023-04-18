@@ -12,8 +12,11 @@ def print_unique_values(list):
 list = [7,8,1,2,3,4,9]
 print_unique_values(list)
 
+# Zad 2
 
-word = "Lorem ipsum dolor sit amet, consectetur adipiscing elit"
-reversed_word = word[::-1].replace(" ", "").replace(",", "").replace(".", "")
-fourth_letters = reversed_word[3::4]
-print(fourth_letters)
+word = "Jade sobie rowerem przez miasto"
+word = word.replace(" ", "")
+word = ''.join(filter(str.isalpha, word))
+reversed_word = word[::-1]
+for i in range(3, len(word), 4):
+    print(reversed_word[i])
