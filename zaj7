@@ -45,14 +45,16 @@ print(fibonacci(10))
 
 # Zad 4
 
-def potegi(*args, n):
-    iloczyn = 1
-    for liczba in args:
-        iloczyn *= liczba ** n
-    return iloczyn
+def power(*args, n):
+    product = 1
+    for number in args:
+        product *= number ** n
+    return product
 
-wynik = potegi(1, 2, 3, 4, 5, n=2)
-print(wynik)
+result = power(1, 2, 3, 4, 5, n=2)
+print(result)
+
+# Zad 5
 
 fruits = ['apple', 'banana', 'pomergranate', 'plum', 'orange', 'melon', 'cherry', 'watermelon']
 
@@ -60,24 +62,20 @@ selected_fruits_lengths = [len(fruit) for fruit in fruits if 'u' in fruit or 'o'
 
 print(selected_fruits_lengths)
 
-[5, 6, 9, 4, 6, 5, 10]
-
+# Zad 6
 
 def newton_symbol(n, k):
-    """
-    Oblicza wartość symbolu Newtona dla danych n i k.
-    """
-    # Sprawdzenie warunków brzegowych
     if k > n:
         return 0
     elif k == 0 or k == n:
         return 1
     else:
-        # Obliczenie symbolu Newtona z definicji
-        numerator = 1
+        x = 1
         for i in range(n-k+1, n+1):
-            numerator *= i
-        denominator = 1
+            x *= i
+        y = 1
         for i in range(1, k+1):
-            denominator *= i
-        return numerator // denominator
+            y *= i
+        return x // y
+
+print(newton_symbol(6,4))
