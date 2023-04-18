@@ -20,3 +20,25 @@ word = ''.join(filter(str.isalpha, word))
 reversed_word = word[::-1]
 for i in range(3, len(word), 4):
     print(reversed_word[i])
+
+# rekurencyjnie
+def fibonacci_recursive(n):
+    if n == 0 or n == 1:
+        return n
+    else:
+        return fibonacci_recursive(n-1) + fibonacci_recursive(n-2)
+
+print(fibonacci_recursive(10))
+
+# nie rekurencyjnie
+def fibonacci_loop(n):
+    if n == 0 or n == 1:
+        return n
+    else:
+        fib1, fib2 = 0, 1
+        for i in range(2, n+1):
+            fib = fib1 + fib2
+            fib1, fib2 = fib2, fib
+        return fib2
+
+print(fibonacci_loop(10))
