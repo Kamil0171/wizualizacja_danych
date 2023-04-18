@@ -21,7 +21,8 @@ reversed_word = word[::-1]
 for i in range(3, len(word), 4):
     print(reversed_word[i])
 
-# rekurencyjnie
+# Zad 3
+
 def fibonacci_recursive(n):
     if n == 0 or n == 1:
         return n
@@ -30,8 +31,7 @@ def fibonacci_recursive(n):
 
 print(fibonacci_recursive(10))
 
-# nie rekurencyjnie
-def fibonacci_loop(n):
+def fibonacci(n):
     if n == 0 or n == 1:
         return n
     else:
@@ -41,4 +41,4 @@ def fibonacci_loop(n):
             fib1, fib2 = fib2, fib
         return fib2
 
-print(fibonacci_loop(10))
+print(fibonacci(10))
