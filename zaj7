@@ -11,3 +11,13 @@ def print_unique_values(list):
 
 list = [7,8,1,2,3,4,9]
 print_unique_values(list)
+
+
+
+
+word = "Ala ma kota"
+word = word.replace(" ", "")  # usuwamy spacje
+word = ''.join(filter(str.isalpha, word))  # usuwamy inne symbole
+reversed_word = word[::-1]
+for i in range(3, len(word), 4):
+    print(reversed_word[i])
