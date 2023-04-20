@@ -1,1 +1,127 @@
+class Bohater:
+    def __init__(self, imie, zycie, taktyka):
+        self.imie = imie
+        self.zycie = zycie
+        self.taktyka = taktyka
 
+    def zmien_zycie(self, nowe_zycie):
+        if 0 <= nowe_zycie <= 100:
+            self.zycie = nowe_zycie
+        else:
+            print("Nieprawidłowe wartości")
+
+    def moc_ataku(self):
+        pass
+
+
+class Wojownik(Bohater):
+    def __init__(self, imie, zycie, sila, taktyka):
+        super().__init__(imie, zycie, taktyka)
+        self.sila = sila
+
+    def moc_ataku(self):
+        if self.zycie < 20:
+            mnoznik_zycia = 1.5
+        else:
+            mnoznik_zycia = 1.0
+        return self.taktyka * self.zycie * self.sila * mnoznik_zycia
+
+
+class Uczynik(Bohater):
+    def __init__(self, imie, zycie, zrecznosc, taktyka):
+        super().__init__(imie, zycie, taktyka)
+        self.zrecznosc = zrecznosc
+
+    def moc_ataku(self):
+        return self.taktyka * self.zycie * self.zrecznosc
+
+wojownik = Wojownik("Garen", 80, 10, 5)
+uczynik = Uczynik("Lux", 90, 8, 8)
+
+print(wojownik.moc_ataku())  # powinno wyświetlić: 4000.0
+print(uczynik.moc_ataku())  # powinno wyświetlić: 5760
+wojownik.zmien_zycie(30)
+print(wojownik.moc_ataku())  # powinno wyświetlić: 6000.0
+wojownik.zmien_zycie(15)
+print(wojownik.moc_ataku())  # powinno wyświetlić: 6750.0
+
+import datetime
+
+class Person:
+    def __init__(self, imie, nazwisko, pesel):
+        self.imie = imie
+        self.nazwisko = nazwisko
+        self.pesel = pesel
+        self.data_urodzenia = self._oblicz_date_urodzenia()
+        self.plec = self._oblicz_plec()
+
+    def _oblicz_date_urodzenia(self):
+        rok = int(self.pesel[0:2])
+        miesiac = int(self.pesel[2:4])
+        dzien = int(self.pesel[4:6])
+        if miesiac > 12:
+            rok += 2000
+            miesiac -= 20
+        else:
+            rok += 1900
+        return datetime.date(rok, miesiac, dzien)
+
+    def _oblicz_plec(self):
+        if int(self.pesel[-2]) % 2 == 0:
+            return "Kobieta"
+        else:
+            return "Mężczyzna"
+
+    def oblicz_wiek(self):
+        dzis = datetime.date.today()
+        wiek = dzis.year - self.data_urodzenia.year
+        if dzis.month < self.data_urodzenia.month or (dzis.month == self.data_urodzenia.month and dzis.day < self.data_urodzenia.day):
+            wiek -= 1
+        return wiek
+
+    def wyswietl_info(self):
+        print(f"Imię: {self.imie}")
+        print(f"Nazwisko: {self.nazwisko}")
+        print(f"Data urodzenia: {self.data_urodzenia}")
+        print(f"Płeć: {self.plec}")
+        print(f"Wiek: {self.oblicz_wiek()} lat")
+
+person = Person("Jan", "Kowalski", "99123112345")
+person.wyswietl_info()
+
+class Vector:
+    def __init__(self, values):
+        self.values = values
+
+    def __add__(self, other):
+        if len(self.values) != len(other.values):
+            raise ValueError("Wektory muszą być tej samej długości!")
+        result = []
+        for i in range(len(self.values)):
+            result.append(self.values[i] + other.values[i])
+        return Vector(result)
+
+    def __sub__(self, other):
+        if len(self.values) != len(other.values):
+            raise ValueError("Wektory muszą być tej samej długości!")
+        result = []
+        for i in range(len(self.values)):
+            result.append(self.values[i] - other.values[i])
+        return Vector(result)
+
+    def __mul__(self, other):
+        if len(self.values) != len(other.values):
+            raise ValueError("Wektory muszą być tej samej długości!")
+        result = 0
+        for i in range(len(self.values)):
+            result += self.values[i] * other.values[i]
+        return result
+
+    def __str__(self):
+        return str(self.values)
+
+v1 = Vector([1, 2, 3])
+v2 = Vector([4, 5, 6])
+print(v1 + v2)
+print(v2 - v1)
+print(v1 * v2)
