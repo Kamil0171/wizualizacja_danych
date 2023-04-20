@@ -79,3 +79,62 @@ def newton_symbol(n, k):
         return x // y
 
 print(newton_symbol(6,4))
+
+# Zad 7
+
+class Polynomial:
+    def __init__(self, coeffs):
+        self.coeffs = coeffs
+
+    def __add__(self, other):
+        new_coeffs = []
+        for i in range(max(len(self.coeffs), len(other.coeffs))):
+            val1 = self.coeffs[i] if i < len(self.coeffs) else 0
+            val2 = other.coeffs[i] if i < len(other.coeffs) else 0
+            new_coeffs.append(val1 + val2)
+        return Polynomial(new_coeffs)
+
+    def __sub__(self, other):
+        new_coeffs = []
+        for i in range(max(len(self.coeffs), len(other.coeffs))):
+            val1 = self.coeffs[i] if i < len(self.coeffs) else 0
+            val2 = other.coeffs[i] if i < len(other.coeffs) else 0
+            new_coeffs.append(val1 - val2)
+        return Polynomial(new_coeffs)
+
+    def __str__(self):
+        result = ""
+        for i in range(len(self.coeffs)):
+            if self.coeffs[i] == 0:
+                continue
+            if i > 0 and self.coeffs[i] > 0:
+                result += "+"
+            if self.coeffs[i] != 1 or i == 0:
+                result += str(self.coeffs[i])
+            if i > 0:
+                result += "x"
+            if i > 1:
+                result += "^" + str(i)
+        return result
+
+    def degree(self):
+        return len(self.coeffs) - 1
+
+    def __getitem__(self, i):
+        return self.coeffs[i]
+
+    def __setitem__(self, i, val):
+        self.coeffs[i] = val
+
+p1 = Polynomial([2, -1, 1]) 
+p2 = Polynomial([1, 0, -3, 2]) 
+p3 = p1 + p2
+print(p3) 
+
+p4 = p2 - p1
+print(p4)
+
+print(p1.degree())
+print(p1[1])
+p1[1] = 0
+print(p1)  
