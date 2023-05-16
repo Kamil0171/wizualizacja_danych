@@ -1,1 +1,41 @@
+import pandas as pd
+import matplotlib.pyplot as plt
+import numpy as np
 
+# Wczytanie pliku CSV do obiektu DataFrame
+df = pd.read_csv("https://raw.githubusercontent.com/mwaskom/seaborn-data/master/penguins.csv")
+
+# Średnia waga w każdej płci
+mean_weight_by_sex = df.groupby("sex")["body_mass_g"].mean()
+print("Średnia waga w każdej płci:\n", mean_weight_by_sex)
+
+# Średnia waga z podziałem na parę i gatunek
+mean_weight_by_species_island = df.groupby(["species", "island"])["body_mass_g"].mean()
+print("Średnia waga z podziałem na parę i gatunek:\n", mean_weight_by_species_island)
+
+# Wartości dla pingwinów z największą i najmniejszą wagą
+max_weight_penguin = df.loc[df["body_mass_g"].idxmax()]
+min_weight_penguin = df.loc[df["body_mass_g"].idxmin()]
+print("Wartości dla pingwinów z największą wagą:\n", max_weight_penguin)
+print("Wartości dla pingwinów z najmniejszą wagą:\n", min_weight_penguin)
+
+# Ilość pingwinów każdego gatunku na każdej wyspie
+count_by_species_island = df.groupby(["species", "island"])["species"].count()
+print("Ilość pingwinów każdego gatunku na każdej wyspie:\n", count_by_species_island)
+
+# Ilość pingwinów gatunku 'Adelie' na każdej wyspie
+adelie_count_by_island = df[df["species"] == "Adelie"].groupby("island")["species"].count()
+print("Ilość pingwinów gatunku 'Adelie' na każdej wyspie:\n", adelie_count_by_island)
+
+# Wykres słupkowy ilości pingwinów w zależności od wyspy
+count_by_island = df.groupby("island")["species"].count()
+count_by_island.plot(kind="bar")
+plt.show()
+
+# Wykres punktowy szerokości dzióba od długości z kolorami i kształtem zależnymi od atrybutów
+colors = np.where(df["species"] == "Adelie", "r", np.where(df["species"] == "Chinstrap", "g", "b"))
+sizes = df["body_mass_g"] / 2000
+shapes = np.where(df["species"] == "Adelie", "^", np.where(df["species"] == "Chinstrap", "s", "o"))
+
+df.plot(kind="scatter", x="bill_length_mm", y="bill_depth_mm", c=colors, s=sizes, marker=shapes)
+plt.show()
